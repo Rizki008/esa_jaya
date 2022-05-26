@@ -12,6 +12,8 @@
     <link href="<?= base_url() ?>backend/dist/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
     <!-- PLUGINS STYLES-->
     <link href="<?= base_url() ?>backend/dist/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>backend/dist/assets/vendors/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>backend/dist/assets/vendors/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" />
     <!-- THEME STYLES-->
     <link href="<?= base_url() ?>backend/dist/assets/css/main.min.css" rel="stylesheet" />
     <!-- PAGE LEVEL STYLES-->
