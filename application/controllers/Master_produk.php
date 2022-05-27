@@ -247,4 +247,72 @@ class Master_produk extends CI_Controller
         $this->session->set_flashdata('pesan', 'diskon Berhasil Dihapus!!!');
         redirect('master_produk/diskon');
     }
+
+    //gambar
+    public function gambar()
+    {
+        $data = array(
+            'title' => 'Data Gambar Produk',
+            'gambar' => $this->m_master_produk->gambar(),
+            'isi' => 'backend/gambar/v_gambar'
+        );
+        $this->load->view('backend/v_wrapper', $data, FALSE);
+    }
+    public function add_gambar($id_produk)
+    {
+        $this->form_validation->set_rules('keterangan', 'Keterangan Gambar', 'required', array('required' => '%s Mohon Untuk Diisi!!!'));
+
+        if ($this->form_validation->run() == TRUE) {
+            $config['upload_path'] = './uploads/gambar';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|ico';
+            $config['max_size']  = '5000';
+            $this->upload->initialize($config);
+            $field_name = "img";
+
+            if (!$this->upload->do_upload($field_name)) {
+                $data = array(
+                    'title' => 'Tambah Gambar',
+                    'produk' => $this->m_master_produk->detail_edit_produk($id_produk),
+                    'gambar' => $this->m_master_produk->detail_gambar($id_produk),
+                    'error_upload' => $this->upload->display_errors(),
+                    'isi' => 'backend/gambar/v_add'
+                );
+                $this->load->view('backend/v_wrapper', $data, FALSE);
+            } else {
+                $upload_data = array('uploads' => $this->upload->data());
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = './uploads/gambar/' . $upload_data['uploads']['file_name'];
+                $this->load->library('image_lib', $config);
+                $data = array(
+                    'id_produk' => $id_produk,
+                    'keterangan' => $this->input->post('keterangan'),
+                    'img' => $upload_data['uploads']['file_name']
+                );
+                $this->m_master_produk->add_gambar($data);
+                $this->session->set_flashdata('pesan', 'Gambar Berhasil Ditambahkan!!!');
+                redirect('master_produk/add_gambar/' . $id_produk);
+            }
+        }
+        $data = array(
+            'title' => 'Tambah Gambar',
+            'produk' => $this->m_master_produk->detail_edit_produk($id_produk),
+            'gambar' => $this->m_master_produk->detail_gambar($id_produk),
+            'isi' => 'backend/gambar/v_add'
+        );
+        $this->load->view('backend/v_wrapper', $data, FALSE);
+    }
+    public function delete_gambar($id_produk, $id_gambar)
+    {
+        $gambar = $this->m_master_produk->detail($id_gambar);
+        if ($gambar->gambar !== "") {
+            unlink('./assets/gambar/' . $gambar->gambar);
+        }
+
+        $data = array(
+            'id_gambar' => $id_gambar,
+        );
+        $this->m_master_produk->delete_gambar($data);
+        $this->session->set_flashdata('pesan', 'Gambar Berhasil Dihapus');
+        redirect('master_produk/add_gambar/' . $id_produk);
+    }
 }
