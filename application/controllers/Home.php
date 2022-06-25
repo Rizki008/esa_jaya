@@ -17,6 +17,7 @@ class Home extends CI_Controller
 			'title' => 'Katalog',
 			'produk' => $this->m_home->produk(),
 			'best_produk' => $this->m_home->best_produk(),
+			'best_deal_product_transaksi' => $this->m_home->best_deal_product_transaksi(),
 			'isi' => 'v_home'
 		);
 		$this->load->view('frontend/v_wrapper', $data, FALSE);
