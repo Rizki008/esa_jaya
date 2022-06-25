@@ -12,7 +12,7 @@
 	<title>Esa Jaya | <?= $title ?></title>
 
 	<!-- Favicon  -->
-	<link rel="icon" href="<?= base_url() ?>frontend/img/core-img/favicon.ico">
+	<link rel="icon" href="<?= base_url() ?>frontend/img/core-img/esa-jaya.png">
 
 	<!-- Core Style CSS -->
 	<link rel="stylesheet" href="<?= base_url() ?>frontend/css/core-style.css">
