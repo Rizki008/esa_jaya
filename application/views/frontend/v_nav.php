@@ -11,7 +11,7 @@
 						<div class="top_single_area d-flex align-items-center">
 							<!-- Logo Area -->
 							<div class="top_logo">
-								<a href="#"><img src="<?= base_url('frontend/') ?>img/core-img/logo.png" alt=""></a>
+								<a href="#"><img src="<?= base_url('frontend/') ?>img/core-img/esa-jaya.png" alt=""></a>
 							</div>
 							<!-- Cart & Menu Area -->
 							<div class="header-cart-menu d-flex align-items-center ml-auto">
