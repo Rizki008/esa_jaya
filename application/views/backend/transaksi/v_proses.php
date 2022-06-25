@@ -1,89 +1,50 @@
 <div class="page-heading">
-    <h1 class="page-title">Basic Tables</h1>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="index.html"><i class="la la-home font-20"></i></a>
-        </li>
-        <li class="breadcrumb-item">Basic Tables</li>
-    </ol>
+	<h1 class="page-title"><?= $title ?></h1>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="index.html"><i class="la la-home font-20"></i></a>
+		</li>
+		<li class="breadcrumb-item">Basic Tables</li>
+	</ol>
 </div>
 <div class="page-content fade-in-up">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="ibox">
-                <div class="ibox-head">
-                    <div class="ibox-title">Contextual classes</div>
-                </div>
-                <div class="ibox-body">
-                    <table class="table table-hover">
-                        <caption>Optional table caption.</caption>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="active">
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>02/08/2017</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>04/10/2017</td>
-                            </tr>
-                            <tr class="info">
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>08/11/2017</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>04/10/2017</td>
-                            </tr>
-                            <tr class="success">
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>08/11/2017</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>04/10/2017</td>
-                            </tr>
-                            <tr class="warning">
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>08/11/2017</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>04/10/2017</td>
-                            </tr>
-                            <tr class="danger">
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>08/11/2017</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="ibox">
+				<div class="ibox-head">
+					<div class="ibox-title">Contextual classes</div>
+				</div>
+				<div class="ibox-body">
+					<table class="table table-hover">
+						<caption>Optional table caption.</caption>
+						<thead>
+							<tr>
+								<th>Nama Pelanggan</th>
+								<th>No Order</th>
+								<th>Tanggal Order</th>
+								<th>Biaya Pengiriman</th>
+								<th>Total Bayar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($pesanan_diproses as $key => $value) { ?>
+								<tr>
+									<td><?= $value->nama_pelanggan ?></td>
+									<td><a href="<?= base_url('admin/detail/' . $value->no_order) ?>"><?= $value->no_order ?></a></td>
+									<td><?= $value->tgl_order ?></td>
+									<td><b>Rp. <?= number_format($value->ongkir, 0) ?></b><br>
+									<td>
+										<b>Rp. <?= number_format($value->total_bayar, 0) ?></b><br>
+
+										<span class="badge badge-primary">Dikemas</span>
+
+									</td>
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
