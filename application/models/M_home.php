@@ -51,14 +51,7 @@ class M_home extends CI_Model
 		$this->db->order_by('produk.id_produk', 'desc');
 		return $this->db->get()->result();
 	}
-	// public function diskon()
-	// {
-	// 	$this->db->select('*');
-	// 	$this->db->from('produk');
-	// 	$this->db->where('diskon>=1 and stock>=1');
-	// 	$this->db->order_by('id_produk', 'desc');
-	// 	return $this->db->get()->result();
-	// }
+
 	// public function best_produk()
 	// {
 	//     $this->db->select_sum('qty');
@@ -101,7 +94,6 @@ class M_home extends CI_Model
 		$this->db->where('id_produk', $id_produk);
 		return $this->db->get()->result();
 	}
-
 
 	//bagus produk
 	public function best_deal_product_transaksi()
