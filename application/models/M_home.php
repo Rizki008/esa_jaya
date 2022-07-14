@@ -102,6 +102,7 @@ class M_home extends CI_Model
 		return $this->db->get()->result();
 	}
 
+
 	//bagus produk
 	public function best_deal_product_transaksi()
 	{
