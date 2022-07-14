@@ -2,23 +2,37 @@
 <html lang="en">
 
 <head>
+	<title>Home | <?= $title ?></title>
 	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-	<!-- Title  -->
-	<title>Esa Jaya | <?= $title ?></title>
-
-	<!-- Favicon  -->
-	<link rel="icon" href="<?= base_url() ?>frontend/img/core-img/favicon.ico">
-
-	<!-- Core Style CSS -->
-	<link rel="stylesheet" href="<?= base_url() ?>frontend/css/core-style.css">
-	<link rel="stylesheet" href="<?= base_url() ?>frontend/style.css">
-
-	<!-- Responsive CSS -->
-	<link href="<?= base_url() ?>frontend/css/responsive.css" rel="stylesheet">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="<?= base_url() ?>template/images/icons/esa-jaya.png" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/fonts/iconic/css/material-design-iconic-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/fonts/linearicons-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/slick/slick.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/MagnificPopup/magnific-popup.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>template/css/main.css">
+	<!--===============================================================================================-->
 </head>
