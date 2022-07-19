@@ -114,7 +114,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="<?= base_url('uploads/produk/' . $value->gambar) ?>" alt="IMG-PRODUCT">
 
-							<a href="<?= site_url('home/detail_produk/' . $value->id_produk); ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="<?= site_url('home/detail_produk/' . $value->id_produk); ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
 								Detail Produk
 							</a>
 						</div>
