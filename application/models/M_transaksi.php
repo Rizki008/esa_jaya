@@ -42,6 +42,7 @@ class M_transaksi extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('transaksi');
+		$this->db->where('id_pelanggan', $this->session->userdata('id_pelanggan'));
 		$this->db->where('status_order=0');
 		$this->db->order_by('id_transaksi', 'desc');
 		return $this->db->get()->result();
@@ -50,6 +51,7 @@ class M_transaksi extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('transaksi');
+		$this->db->where('id_pelanggan', $this->session->userdata('id_pelanggan'));
 		$this->db->where('status_order=1');
 		$this->db->order_by('id_transaksi', 'desc');
 		return $this->db->get()->result();
@@ -58,6 +60,7 @@ class M_transaksi extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('transaksi');
+		$this->db->where('id_pelanggan', $this->session->userdata('id_pelanggan'));
 		$this->db->where('status_order=2');
 		$this->db->order_by('id_transaksi', 'desc');
 		return $this->db->get()->result();
@@ -66,6 +69,7 @@ class M_transaksi extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('transaksi');
+		$this->db->where('id_pelanggan', $this->session->userdata('id_pelanggan'));
 		$this->db->where('status_order=3');
 		$this->db->order_by('id_transaksi', 'desc');
 		return $this->db->get()->result();
@@ -79,6 +83,15 @@ class M_transaksi extends CI_Model
 		return $this->db->get()->row();
 	}
 
+	public function rekening()
+	{
+		$this->db->select('*');
+		$this->db->from('rekening');
+		return $this->db->get()->result();
+	}
+
+
+
 	public function pesanan_detail($no_order)
 	{
 		$this->db->select('*');
@@ -89,10 +102,26 @@ class M_transaksi extends CI_Model
 		$this->db->where('transaksi.no_order', $no_order);
 		return $this->db->get()->result();
 	}
-	public function rekening()
+
+	public function insert_riview()
+	{
+		$data = array(
+			'id_pelanggan' => $this->session->userdata('id_pelanggan'),
+			'id_produk' => $this->input->post('id_produk'),
+			// 'nama_pelanggan' => $this->session->userdata('nama_pelanggan'),
+			'tgl_riview' => date('Y-m-d'),
+			'isi' => $this->input->post('isi'),
+			// 'status' => 1,
+		);
+		$this->db->insert('riview', $data);
+	}
+
+	public function info($no_order)
 	{
 		$this->db->select('*');
-		$this->db->from('rekening');
+		$this->db->from('transaksi');
+		$this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
+		$this->db->where('no_order', $no_order);
 		return $this->db->get()->result();
 	}
 }
