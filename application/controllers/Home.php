@@ -32,7 +32,7 @@ class Home extends CI_Controller
 			'best_produk' => $this->m_home->best_produk(),
 			'diskon' => $this->m_home->diskon(),
 			'produk' => $this->m_home->produk_all($id_kategori),
-			'isi' => 'v_home',
+			'isi' => 'frontend/kategori/v_kategori',
 		);
 		$this->load->view('frontend/v_wrapper', $data, FALSE);
 	}
