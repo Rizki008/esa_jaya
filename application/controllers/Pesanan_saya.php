@@ -61,6 +61,7 @@ class Pesanan_saya extends CI_Controller
 					'nama_bank' => $this->input->post('nama_bank'),
 					'no_rek' => $this->input->post('no_rek'),
 					'status_bayar' => '1',
+					'status_order' => '1',
 					'bukti_bayar' => $upload_data['uploads']['file_name'],
 				);
 				$this->m_transaksi->upload_buktibayar($data);
@@ -99,7 +100,7 @@ class Pesanan_saya extends CI_Controller
 		$this->session->set_flashdata('pesan', 'Pesanan Dibatalkan');
 	}
 
-	public function detail($no_order)
+	public function detail_selesai($no_order)
 	{
 		$data = array(
 			'title' => 'Pesanan',
@@ -108,5 +109,12 @@ class Pesanan_saya extends CI_Controller
 			'isi' => 'frontend/cart/v_detail'
 		);
 		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+
+	public function insert_riview()
+	{
+		$data['insert'] = $this->m_transaksi->insert_riview();
+		$this->session->set_flashdata('pesan', 'Berhasil Memberi Riview');
+		redirect('pesanan_saya');
 	}
 }
