@@ -48,11 +48,14 @@
 							<li>
 								<a href="#">Kategori</a>
 								<?php $kategori = $this->m_home->kategori_produk(); ?>
-								<?php foreach ($kategori as $key => $value) { ?>
-									<ul class="sub-menu">
-										<li><a href="<?= base_url('/home/kategori/' . $value->id_kategori) ?>"><?= $value->nama_kategori ?></a></li>
-									</ul>
-								<?php } ?>
+
+								<ul class="sub-menu">
+									<?php foreach ($kategori as $key => $value) { ?>
+										<li>
+											<a href="<?= base_url('home/kategori/' . $value->id_kategori) ?>"><?= $value->nama_kategori ?></a>
+										</li>
+									<?php } ?>
+								</ul>
 							</li>
 						</ul>
 					</div>
