@@ -76,7 +76,8 @@
 									<?php }  ?>
 								</td>
 								<td>Rp. <?= number_format($value->ongkir, 0) ?></td>
-								<td><?= $value->status_order == 2 ?><br>
+								<td>
+									<!-- <?= $value->status_order == 2 ?><br> -->
 									<button class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#diterima<?= $value->id_transaksi ?>">Diterima</button>
 								</td>
 							</tr>
