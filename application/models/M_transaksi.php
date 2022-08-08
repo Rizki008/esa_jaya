@@ -9,10 +9,18 @@ class M_transaksi extends CI_Model
 	{
 		$this->db->insert('transaksi', $data);
 	}
+	public function simpan_transaksi_langsung($data)
+	{
+		$this->db->insert('transaksi_langsung', $data);
+	}
 
 	public function simpan_rinci($data_rinci)
 	{
 		$this->db->insert('rinci_transaksi', $data_rinci);
+	}
+	public function simpan_rinci_langsung($data_rinci_langsung)
+	{
+		$this->db->insert('rinci_langsung', $data_rinci_langsung);
 	}
 
 	public function upload_buktibayar($data)
@@ -122,6 +130,18 @@ class M_transaksi extends CI_Model
 		$this->db->from('transaksi');
 		$this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
 		$this->db->where('no_order', $no_order);
+		return $this->db->get()->result();
+	}
+
+	public function produk()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
+		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
+		$this->db->where('stock>=1');
+		$this->db->order_by('produk.id_produk', 'desc');
+		$this->db->limit(6);
 		return $this->db->get()->result();
 	}
 }

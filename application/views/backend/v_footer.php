@@ -58,8 +58,26 @@
 		});
 	});
 </script>
+<script>
+	function kembalian() {
+		let total = $("#total_harga").html(),
+			Jumlah_bayar = $('[name="Jumlah_bayar"').val();
+		// diskon = $('[name="diskon"]').val();
+		$(".kembalian").html(Jumlah_bayar - total);
+		checkUang()
+	}
+</script>
+<script>
+	console.log = function() {}
+	$("#pesan_produk").on('change', function() {
 
+		$(".name").html($(this).find(':selected').attr('data-name'));
+		$(".name").val($(this).find(':selected').attr('data-name'));
 
+		$(".price").html($(this).find(':selected').attr('data-price'));
+		$(".price").val($(this).find(':selected').attr('data-price'));
+	});
+</script>
 <!-- load gambar -->
 <script>
 	function bacaGambar(input) {

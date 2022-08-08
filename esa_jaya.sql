@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jul 2022 pada 08.20
+-- Waktu pembuatan: 29 Jul 2022 pada 04.16
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -146,7 +146,8 @@ CREATE TABLE `pelanggan` (
 INSERT INTO `pelanggan` (`id_pelanggan`, `id_kabupaten`, `nama`, `email`, `password`, `alamat`, `no_tlpn`) VALUES
 (1, NULL, 'Dahlan', 'rizal@gmail.com', '12345', 'jambal', '0891276278168'),
 (2, 1, 'sara', 'sara@gmail.com', '12345', 'LINK.KRAMAT JAYA RT/RW 007/003', '0891291828312'),
-(3, 1, 'saya', 'saya@gmail.com', '12345', 'java', '0891727162817');
+(3, 1, 'saya', 'saya@gmail.com', '12345', 'java', '0891727162817'),
+(4, 1, 'hani', 'hai@gmail.com', '12345', 'jakarta', '089172635412');
 
 -- --------------------------------------------------------
 
@@ -173,7 +174,7 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id_produk`, `id_kategori`, `nama_produk`, `harga`, `stock`, `promo`, `berat`, `gambar`, `deskripsi`, `is_available`) VALUES
 (1, 2, 'semen 3 roda', '8000000', '50', '', '250', 'product-7.jpg', 'smen 3 roda ', 1),
-(2, 2, 'pasir', '8000000', '50', '12000', '90', 'product-1.jpg', 'pasir tanah kusir', 1);
+(2, 1, 'pasir', '8000000', '50', '12000', '90', 'product-1.jpg', 'pasir tanah kusir', 1);
 
 -- --------------------------------------------------------
 
@@ -236,7 +237,36 @@ INSERT INTO `rinci_transaksi` (`id_rinci`, `no_order`, `id_produk`, `qty`) VALUE
 (2, 20220621, 2, '1'),
 (3, 20220714, 1, '1'),
 (4, 20220714, 2, '2'),
-(5, 20220714, 1, '6');
+(5, 20220714, 1, '6'),
+(6, 20220719, 1, '1'),
+(7, 202207194, 2, '2'),
+(8, 202207194, 1, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `riview`
+--
+
+CREATE TABLE `riview` (
+  `id_riview` int(11) NOT NULL,
+  `id_pelanggan` int(11) DEFAULT NULL,
+  `id_produk` int(11) DEFAULT NULL,
+  `isi` text DEFAULT NULL,
+  `tgl_riview` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `riview`
+--
+
+INSERT INTO `riview` (`id_riview`, `id_pelanggan`, `id_produk`, `isi`, `tgl_riview`) VALUES
+(1, 4, 1, 'sdadsa', '2022-07-19'),
+(2, 4, 2, 'dsamdas,mdsa', '2022-07-19'),
+(3, 4, 1, ',,,nnn', '2022-07-19'),
+(4, 4, 1, 'bdsjabdjhbas', '2022-07-19'),
+(5, 4, 2, 'dkbdsbdjabdjsa', '2022-07-19'),
+(6, 4, 1, 'hayang kawin mih teu nyiuen dosa terus  ya allah', '2022-07-19');
 
 -- --------------------------------------------------------
 
@@ -282,7 +312,9 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_pelanggan`, `id_lokasi`, `no_order`
 (2, 2, 1, '20220620EIGVU1TB', '2022-06-20', 'rizal', '0891272916316', 'dsdsadas', NULL, NULL, NULL, NULL, NULL, '12000', NULL, NULL, '7988000', '8000000', 1, 3, 'saya', 'bca', '128638112121', 'poudre_de_cacao.jpg', 'jaka', NULL),
 (3, 1, 2, '20220621RFLD648S', '2022-06-21', 'wasiat', '085741324567', 'LINK.KRAMAT JAYA RT/RW 007/003', NULL, NULL, NULL, NULL, NULL, '12000', NULL, NULL, '8000000', '8012000', 1, 1, 'sayur', 'bca', '2134567897', 'squence_diagram-login_admin.png', NULL, NULL),
 (4, 2, 2, '20220714R9SLKEDF', '2022-07-14', 'jamal', '089123123123', 'jakarta', NULL, NULL, NULL, NULL, NULL, '12000', NULL, NULL, '23988000', '24000000', 1, 0, 'dksl', 'sdh', '1231231231231231', 'logo.png', NULL, NULL),
-(5, 3, 1, '20220714DA8YXLPO', '2022-07-14', 'dsa', '123123123123', 'jakarta', NULL, NULL, NULL, NULL, NULL, '12000', NULL, NULL, '47928000', '47940000', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+(5, 3, 1, '20220714DA8YXLPO', '2022-07-14', 'dsa', '123123123123', 'jakarta', NULL, NULL, NULL, NULL, NULL, '12000', NULL, NULL, '47928000', '47940000', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 4, 2, '20220719QNLTOVQB', '2022-07-19', 'jamal', '089716253416', 'Ciawigebang, Kuningan', NULL, NULL, NULL, NULL, NULL, '12000', NULL, NULL, '7988000', '8000000', 1, 3, 'hah', 'bai', '1231231231231231', 'Circular_Brown_Cookie_Bakery_Shop_Logo.png', 'mfsmf', NULL),
+(7, 4, 2, '202207194A8K0I3D', '2022-07-19', 'jamal', '0909090909098', 'jakarta', NULL, NULL, NULL, NULL, NULL, '12000', NULL, NULL, '23988000', '24000000', 1, 3, 'hana', 'bai', '1231231231231231', 'Circular_Brown_Cookie_Bakery_Shop_Logo1.png', '  ,n,n,', NULL);
 
 -- --------------------------------------------------------
 
@@ -371,6 +403,12 @@ ALTER TABLE `rinci_transaksi`
   ADD PRIMARY KEY (`id_rinci`);
 
 --
+-- Indeks untuk tabel `riview`
+--
+ALTER TABLE `riview`
+  ADD PRIMARY KEY (`id_riview`);
+
+--
 -- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
@@ -420,7 +458,7 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
@@ -444,13 +482,19 @@ ALTER TABLE `rekening`
 -- AUTO_INCREMENT untuk tabel `rinci_transaksi`
 --
 ALTER TABLE `rinci_transaksi`
-  MODIFY `id_rinci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_rinci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `riview`
+--
+ALTER TABLE `riview`
+  MODIFY `id_riview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

@@ -27,7 +27,10 @@
 						<a href="<?= base_url('master_produk/produk') ?>">Produk</a>
 					</li>
 					<li>
-						<a href="<?= base_url('master_produk/diskon') ?>">Diskon</a>
+						<a href="<?= base_url('master_produk/diskon') ?>">Diskon Produk</a>
+					</li>
+					<li>
+						<a href="<?= base_url('master_produk/diskon_besar') ?>">Diskon Belanja Besar</a>
 					</li>
 					<li>
 						<a href="<?= base_url('master_produk/gambar') ?>">Gambar</a>
@@ -36,7 +39,7 @@
 			</li>
 			<li>
 				<a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
-					<span class="nav-label">Transaksi</span><i class="fa fa-angle-left arrow"></i></a>
+					<span class="nav-label">Transaksi Online</span><i class="fa fa-angle-left arrow"></i></a>
 				<ul class="nav-2-level collapse">
 					<li>
 						<a href="<?= base_url('transaksi/pesanan') ?>">Pesanan</a>
@@ -51,6 +54,11 @@
 						<a href="<?= base_url('transaksi/selesai') ?>">Selesai</a>
 					</li>
 				</ul>
+			</li>
+			<li>
+				<a href="<?= base_url('transaksi/transaksi_langsung') ?>"><i class="sidebar-item-icon fa fa-money"></i>
+					<span class="nav-label">Transaksi Langsung</span>
+				</a>
 			</li>
 			<li>
 				<a href="javascript:;"><i class="sidebar-item-icon fa fa-bar-chart"></i>

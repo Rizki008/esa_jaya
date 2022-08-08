@@ -12,6 +12,24 @@ class M_pesanan_masuk extends CI_Model
 		$this->db->order_by('id_transaksi', 'desc');
 		return $this->db->get()->result();
 	}
+	public function pesanan_langsung()
+	{
+		$this->db->select('*');
+		$this->db->from('transaksi_langsung');
+		// $this->db->join('rinci_langsung', 'transaksi_langsung.no_jual=rinci_langsung.no_jual', 'left');
+		$this->db->where('status_belanja=0');
+		$this->db->order_by('id_belanja', 'desc');
+		return $this->db->get()->result();
+	}
+	public function pesanan_langsung_selesai()
+	{
+		$this->db->select('*');
+		$this->db->from('transaksi_langsung');
+		// $this->db->join('rinci_langsung', 'transaksi_langsung.no_jual=rinci_langsung.no_jual', 'left');
+		$this->db->where('status_belanja=1');
+		$this->db->order_by('id_belanja', 'desc');
+		return $this->db->get()->result();
+	}
 
 	public function pesanan_diproses()
 	{
@@ -53,6 +71,11 @@ class M_pesanan_masuk extends CI_Model
 	{
 		$this->db->where('id_transaksi', $data['id_transaksi']);
 		$this->db->update('transaksi', $data);
+	}
+	public function update_order_langsung($data)
+	{
+		$this->db->where('id_belanja', $data['id_belanja']);
+		$this->db->update('transaksi_langsung', $data);
 	}
 
 	public function diproses_pesanan()

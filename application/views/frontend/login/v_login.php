@@ -18,13 +18,13 @@
 <h5><i class="icon fa fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
 
 				if (
-					$this->session->flashdata('pesan')
+					$this->session->flashdata('error')
 				) {
 					echo '<div class="alert alert-success alert-dismissible"> 
 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 <h5><i class="icon fa fa-check"></i>Sukses</h5>';
 					echo
-					$this->session->flashdata('pesan');
+					$this->session->flashdata('error');
 					echo '</div>';
 				}
 				?>
@@ -47,6 +47,9 @@
 					</button><br>
 					<a href="<?= base_url('pelanggan/register') ?>" class="flex-c-m stext-101 cl0 size-121 bg2 bor1 hov-btn3 p-lr-15 trans-04 pointer">
 						Register
+					</a><br>
+					<a href="<?= base_url('lupa_password') ?>" class="flex-c-m stext-101 cl0 size-121 bg1 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+						Lupa Passeord
 					</a>
 				</form>
 			</div>

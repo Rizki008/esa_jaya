@@ -39,7 +39,16 @@
 									</td>
 									<td><?= $value->nama_pengirim ?></td>
 									<td>
-										<b>Rp. <?= number_format($value->total_bayar, 0) ?></b><br>
+										<b>
+											<?php if ($value->total_bayar >= 1000000) { ?>
+												<p>Potongan 10%</p>
+												Rp. <?= number_format($value->total_bayar - (10 / 100 * $value->total_bayar), 0) ?>
+											<?php } else { ?>
+												Rp. <?= number_format($value->total_bayar, 0) ?>
+											<?php } ?>
+										</b>
+										<!-- <b>Rp. <?= number_format($value->total_bayar, 0) ?></b> -->
+										<br>
 										<span class="badge badge-success">Diterima</span>
 									</td>
 

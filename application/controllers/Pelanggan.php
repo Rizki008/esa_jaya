@@ -14,7 +14,7 @@ class Pelanggan extends CI_Controller
 	public function register()
 	{
 		$this->form_validation->set_rules('nama', 'Nama Pelanggan', 'required', array('required' => '%s Mohon Untuk Diisi!!!'));
-		$this->form_validation->set_rules('email', 'email', 'required', array('required' => '%s Mohon Untuk Diisi!!!'));
+		$this->form_validation->set_rules('email', 'email', 'required|is_unique[pelanggan.email]', array('required' => '%s Mohon Untuk Diisi!!!', 'is_unique' => '%s Email Sudah Terdaptar'));
 		$this->form_validation->set_rules('password', 'Password', 'required', array('required' => '%s Mohon Untuk Diisi!!!'));
 		$this->form_validation->set_rules('no_tlpn', 'No Tlpn', 'required', array('required' => '%s Mohon Untuk Diisi!!!'));
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', array('required' => '%s Mohon Untuk Diisi!!!'));

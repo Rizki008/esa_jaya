@@ -41,7 +41,13 @@
 
 						<div class="size-209">
 							<span class="mtext-110 cl2">
-								Rp. <?php echo $this->cart->format_number($this->cart->total(), 0) ?>
+								<?php if ($this->cart->total() >= 1000000) { ?>
+									Rp. <?= number_format($this->cart->total(), 0) ?><br>
+									<span class="badge badge-danger">Potongan Harga</span><br>
+									Rp. <?= number_format($this->cart->total() - (10 / 100 * $this->cart->total()), 0) ?>
+								<?php } else { ?>
+									Rp. <?= number_format($this->cart->total(), 0) ?>
+								<?php } ?>
 							</span>
 						</div>
 					</div>
@@ -55,23 +61,40 @@
 
 						<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 							<div class="bor8 bg0 m-b-12">
-								<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="nama_pelanggan" placeholder="Nama Penerima">
+								<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="id_pelanggan" value="<?= $this->session->userdata('nama'); ?>" readonly placeholder="Nama Penerima">
 							</div>
+							<!-- <div class="bor8 bg0 m-b-12">
+								<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="nama_pelanggan" placeholder="Nama Penerima">
+							</div> -->
 
 							<div class="bor8 bg0 m-b-22">
-								<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="number" name="no_tlpn" placeholder="No Telephone">
+								<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="number" name="no_tlpn" value="<?= $this->session->userdata('no_tlpn'); ?>" readonly placeholder="No Telephone">
 							</div>
 
 							<div class="p-t-15">
 								<span class="stext-112 cl8">
 									Alamat Pelanggan
 								</span>
+								<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+									<select class="js-select2" name="provinsi" id="provinsi" required>
+										<option value="">---Pilih Provinsi---</option>
+										<?php foreach ($provinsi as $key => $value) { ?>
+											<option value="<?= $value->id_provinsi ?>" data-provinsi="<?= $value->provinsi ?>" name="provinsi"><?= $value->provinsi ?></option>
+										<?php } ?>
+									</select>
+									<div class="dropDownSelect2"></div>
+								</div>
+								<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+									<select name="kabupaten" id="kabupaten" class="js-select2" required>
 
+									</select>
+									<div class="dropDownSelect2"></div>
+								</div>
 								<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 									<select class="js-select2" name="id_lokasi" id="ongkir">
-										<option value="">---Pilih Lokasi Anda---</option>
+										<option value="">---Pilih Kecamatan---</option>
 										<?php foreach ($lokasi as $key => $value) { ?>
-											<option value="<?= $value->id_lokasi ?>" data-ongkir=<?= $value->ongkir ?> data-total=<?= $this->cart->total() +  $value->ongkir ?>><?= $value->nama_lokasi ?></option>
+											<option value="<?= $value->id_lokasi ?>" data-ongkir=<?= $value->ongkir ?> data-total=<?php if ($this->cart->total() >= 1000000) { ?> <?= $this->cart->total() - (10 / 100 * $this->cart->total()) +  $value->ongkir  ?> <?php } else { ?> <?= $this->cart->total()  +  $value->ongkir ?> <?php } ?>><?= $value->nama_lokasi ?></option>
 										<?php } ?>
 									</select>
 									<div class="dropDownSelect2"></div>
@@ -112,7 +135,6 @@
 								Shipping:
 							</span>
 						</div>
-
 						<div class="size-209 p-t-1">
 							<span class="mtext-110 cl2">
 								Rp. <span class="ongkir"></span>
@@ -125,7 +147,6 @@
 								Berat:
 							</span>
 						</div>
-
 						<div class="size-209 p-t-1">
 							<span class="mtext-110 cl2">
 								<span><?= $total_berat ?> Gr</span>

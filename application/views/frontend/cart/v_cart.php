@@ -93,7 +93,14 @@
 
 						<div class="size-209">
 							<span class="mtext-110 cl2">
-								Rp. <?= number_format($this->cart->total(), 0) ?>
+								<?php if ($this->cart->total() >= 1000000) { ?>
+									Rp. <?= number_format($this->cart->total(), 0) ?><br>
+									<span class="badge badge-danger">Potongan Harga</span><br>
+									Rp. <?= number_format($this->cart->total() - (10 / 100 * $this->cart->total()), 0) ?>
+								<?php } else { ?>
+									Rp. <?= number_format($this->cart->total(), 0) ?>
+								<?php } ?>
+
 							</span>
 						</div>
 					</div>

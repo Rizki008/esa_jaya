@@ -99,7 +99,17 @@
 						<tr>
 							<th>Total Bayar</th>
 							<th>:</th>
-							<td><?= number_format($value->total_bayar, 0) ?></td>
+							<td>
+								<!-- $value->harga - ($value->diskon / 100 * $value->harga) -->
+								<?php if ($value->total_bayar >= 1000000) { ?>
+									<p>Potongan 10%</p>
+									Rp. <?= number_format($value->total_bayar - (10 / 100 * $value->total_bayar), 0) ?>
+								<?php } else { ?>
+									Rp. <?= number_format($value->total_bayar, 0) ?>
+								<?php } ?>
+
+								<!-- <?= number_format($value->total_bayar, 0) ?> -->
+							</td>
 						</tr>
 						<tr>
 							<th>Catatan</th>

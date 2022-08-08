@@ -142,4 +142,34 @@ class M_master_produk extends CI_Model
         $this->db->where('id_gambar', $data['id_gambar']);
         $this->db->delete('gambar');
     }
+
+    //diskon belanja besar
+    public function diskon_besar()
+    {
+        $this->db->select('*');
+        $this->db->from('diskon_belanja');
+        $this->db->order_by('id_diskon_belanja', 'desc');
+        return $this->db->get()->result();
+    }
+    public function add_diskon_besar($data)
+    {
+        $this->db->insert('diskon_belanja', $data);
+    }
+    public function detail_edit_diskon_besar($id_diskon_belanja)
+    {
+        $this->db->select('*');
+        $this->db->from('diskon_belanja');
+        $this->db->where('id_diskon_belanja', $id_diskon_belanja);
+        return $this->db->get()->row();
+    }
+    public function update_diskon_besar($data)
+    {
+        $this->db->where('id_diskon_belanja', $data['id_diskon_belanja']);
+        $this->db->update('diskon_belanja', $data);
+    }
+    public function delete_diskon_besar($data)
+    {
+        $this->db->where('id_diskon_belanja', $data['id_diskon_belanja']);
+        $this->db->delete('diskon_belanja');
+    }
 }

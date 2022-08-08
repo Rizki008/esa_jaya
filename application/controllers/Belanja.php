@@ -10,6 +10,7 @@ class Belanja extends CI_Controller
 		parent::__construct();
 		$this->load->model('m_transaksi');
 		$this->load->model('m_lokasi_ongkir');
+		$this->load->model('m_lokasi');
 	}
 
 	public function index()
@@ -81,6 +82,7 @@ class Belanja extends CI_Controller
 			$data = array(
 				'title' => 'Langsung Beli',
 				'lokasi' => $this->m_lokasi_ongkir->lokasi(),
+				'provinsi' => $this->m_lokasi->provinsi(),
 				'isi' => 'frontend/cart/v_cekout'
 			);
 			$this->load->view('frontend/v_wrapper', $data, FALSE);

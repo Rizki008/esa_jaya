@@ -315,4 +315,54 @@ class Master_produk extends CI_Controller
         $this->session->set_flashdata('pesan', 'Gambar Berhasil Dihapus');
         redirect('master_produk/add_gambar/' . $id_produk);
     }
+
+    //diskon belanja besar
+    // public function diskon_besar()
+    // {
+    //     $data = array(
+    //         'title' => 'Diskon Produk',
+    //         'diskon_besar' => $this->m_master_produk->diskon_nesar(),
+    //         'isi' => 'backend/diskonbelanja/v_diskon'
+    //     );
+    //     $this->load->view('backend/v_wrapper', $data, FALSE);
+    // }
+    public function diskon_besar()
+    {
+        $this->form_validation->set_rules('besar_diskon', 'Nama Kategori', 'required', array('required' => '%s Mohon Untuk Diisi!!!'));
+
+        if ($this->form_validation->run() == FALSE) {
+            $data = array(
+                'title' => 'Diskon Produk',
+                'diskon_besar' => $this->m_master_produk->diskon_besar(),
+                'isi' => 'backend/diskonbelanja/v_diskon'
+            );
+            $this->load->view('backend/v_wrapper', $data, FALSE);
+        } else {
+            $data = array(
+                'besar_diskon' => $this->input->post('besar_diskon'),
+            );
+            $this->m_master_produk->add_diskon_besar($data);
+            $this->session->set_flashdata('pesan', 'Diskon Belanja Besar Berhasil Ditambahkan');
+            redirect('master_produk/diskon_besar');
+        }
+    }
+    public function edit_diskon_besar($id_diskon_belanja = null)
+    {
+        $data = array(
+            'id_diskon_belanja' => $id_diskon_belanja,
+            'besar_diskon' => $this->input->post('besar_diskon'),
+        );
+        $this->m_master_produk->update_diskon_besar($data);
+        $this->session->set_flashdata('pesan', 'diskon Berhasil Diupdate!!!');
+        redirect('master_produk/diskon_besar');
+    }
+    public function delete_diskon_besar($id_diskon_belanja = null)
+    {
+        $data = array(
+            'id_diskon_belanja' => $id_diskon_belanja,
+        );
+        $this->m_master_produk->delete_diskon_besar($data);
+        $this->session->set_flashdata('pesan', 'diskon Berhasil Dihapus!!!');
+        redirect('master_produk/diskon_besar');
+    }
 }
