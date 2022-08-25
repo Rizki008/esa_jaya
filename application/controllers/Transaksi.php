@@ -48,6 +48,17 @@ class Transaksi extends CI_Controller
 		$this->load->view('backend/v_wrapper', $data, FALSE);
 	}
 
+	public function diterima($id_transaksi)
+	{
+		$data = array(
+			'id_transaksi' => $id_transaksi,
+			'status_order' => 3
+		);
+		$this->m_pesanan_masuk->update_order($data);
+		$this->session->set_flashdata('pesan', 'Pesanan Telah Diterima');
+		redirect('transaksi/pesanan');
+	}
+
 	public function analisis_produk()
 	{
 		$data = array(
