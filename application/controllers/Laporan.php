@@ -67,6 +67,22 @@ class Laporan extends CI_Controller
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);
 	}
+	public function lap_langsung()
+	{
+		$tanggal = $this->input->post('tanggal');
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+
+		$data = array(
+			'title' => 'Laporan Penjualan Harian',
+			'tanggal' => $tanggal,
+			'bulan' => $bulan,
+			'tahun' => $tahun,
+			'laporan' => $this->m_laporan->lap_langsung($tanggal, $bulan, $tahun),
+			'isi' => 'backend/laporan/v_lap_langsung'
+		);
+		$this->load->view('backend/v_wrapper', $data, FALSE);
+	}
 
 	public function lap_stock()
 	{
