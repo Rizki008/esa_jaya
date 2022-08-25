@@ -12,18 +12,29 @@
 
 				<?php
 
-				echo validation_errors('<div class="alert alert-warning alert-dismissible">
-<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<h5><i class="icon fas fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
+				// 				echo validation_errors('<div class="alert alert-warning alert-dismissible">
+				// <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				// <h5><i class="icon fas fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
 
-				if (
-					$this->session->flashdata('pesan')
-				) {
-					echo '<div class="alert alert-success alert-dismissible"> 
-<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<h5><i class="icon fas fa-check"></i>Sukses</h5>';
-					echo
-					$this->session->flashdata('pesan');
+				// 				if (
+				// 					$this->session->flashdata('pesan')
+				// 				) {
+				// 					echo '<div class="alert alert-success alert-dismissible"> 
+				// <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				// <h5><i class="icon fas fa-check"></i>Sukses</h5>';
+				// 					echo
+				// 					$this->session->flashdata('pesan');
+				// 					echo '</div>';
+				// 				}
+				echo validation_errors('<div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
+
+				if ($this->session->flashdata('pesan')) {
+					echo '<div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Sukses</h5>';
+					echo $this->session->flashdata('pesan');
 					echo '</div>';
 				}
 				?>

@@ -1,5 +1,5 @@
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('<?= base_url() ?>template/images/bg-01.jpg');">
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('<?= base_url() ?>template/images/rmh.jpg');">
 	<h2 class="ltext-105 cl0 txt-center">
 		Login Pelanggan
 	</h2>
@@ -13,18 +13,35 @@
 			<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 				<?php
 
-				echo validation_errors('<div class="alert alert-warning alert-dismissible">
-<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<h5><i class="icon fa fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
+				// 				echo validation_errors('<div class="alert alert-warning alert-dismissible">
+				// <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				// <h5><i class="icon fa fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
 
-				if (
-					$this->session->flashdata('error')
-				) {
-					echo '<div class="alert alert-success alert-dismissible"> 
-<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-<h5><i class="icon fa fa-check"></i>Sukses</h5>';
-					echo
-					$this->session->flashdata('error');
+				// 				if (
+				// 					$this->session->flashdata('error')
+				// 				) {
+				// 					echo '<div class="alert alert-success alert-dismissible"> 
+				// <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				// <h5><i class="icon fa fa-check"></i>Sukses</h5>';
+				// 					echo
+				// 					$this->session->flashdata('error');
+				// 					echo '</div>';
+				// 				}
+				echo validation_errors('<div class="alert alert-warning alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<h5><i class="icon fa fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
+
+				if ($this->session->flashdata('error')) {
+					echo '<div class="alert alert-danger alert-dismissible">
+						<h5><i class="icon fa fa-ban"></i> Gagal</h5>';
+					echo $this->session->flashdata('error');
+					echo '</div>';
+				}
+
+				if ($this->session->flashdata('pesan')) {
+					echo '<div class="alert alert-success alert-dismissible">
+						<h5><i class="icon fa fa-check"></i> Sukses</h5>';
+					echo $this->session->flashdata('pesan');
 					echo '</div>';
 				}
 				?>
@@ -48,7 +65,7 @@
 					<a href="<?= base_url('pelanggan/register') ?>" class="flex-c-m stext-101 cl0 size-121 bg2 bor1 hov-btn3 p-lr-15 trans-04 pointer">
 						Register
 					</a><br>
-					<a href="<?= base_url('lupa_password') ?>" class="flex-c-m stext-101 cl0 size-121 bg1 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+					<a href="<?= base_url('pelanggan/forgotPassword') ?>" class="flex-c-m stext-101 cl0 size-121 bg1 bor1 hov-btn3 p-lr-15 trans-04 pointer">
 						Lupa Passeord
 					</a>
 				</form>
