@@ -43,6 +43,18 @@ class M_laporan extends CI_Model
 
         return $this->db->get()->result();
     }
+    public function lap_langsung($tahun)
+    {
+        $this->db->select('*');
+        $this->db->from('rinci_langsung');
+        $this->db->join('transaksi_langsung', 'transaksi_langsung.no_jual = rinci_langsung.no_jual', 'left');
+        $this->db->join('produk', 'produk.id_produk = rinci_langsung.id_produk', 'left');
+        $this->db->where('YEAR(tgl_belanja)', $tahun);
+        $this->db->where('status_belanja=1');
+        $this->db->order_by('qty', 'desc');
+
+        return $this->db->get()->result();
+    }
 
     public function lap_stock($tanggal, $bulan, $tahun)
     {
