@@ -29,7 +29,7 @@
 						<tbody>
 							<?php foreach ($pesanan as $key => $value) { ?>
 								<tr>
-									<td><?= $value->nama_pelanggan ?></td>
+									<td><?= $value->nama ?></td>
 									<td>
 										<?= $value->no_order ?></a>
 									</td>

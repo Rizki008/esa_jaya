@@ -29,7 +29,7 @@
 						<tbody>
 							<?php foreach ($pesanan_diproses as $key => $value) { ?>
 								<tr>
-									<td><?= $value->nama_pelanggan ?></td>
+									<td><?= $value->nama ?></td>
 									<td><a href="<?= base_url('admin/detail/' . $value->no_order) ?>"><?= $value->no_order ?></a></td>
 									<td><?= $value->tgl_order ?></td>
 									<td><b>Rp. <?= number_format($value->ongkir, 0) ?></b><br>

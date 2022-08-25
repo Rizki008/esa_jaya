@@ -31,7 +31,7 @@
 						<tbody>
 							<?php foreach ($pesanan_selesai as $key => $value) { ?>
 								<tr>
-									<td><?= $value->nama_pelanggan ?></td>
+									<td><?= $value->nama ?></td>
 									<td><?= $value->no_order ?></td>
 									<td><?= $value->tgl_order ?></td>
 									<td><?= $value->alamat ?></td>

@@ -31,7 +31,7 @@
 						<tbody>
 							<?php foreach ($pesanan_dikirim as $key => $value) { ?>
 								<tr>
-									<td><?= $value->nama_pelanggan ?></td>
+									<td><?= $value->nama ?></td>
 									<td><?= $value->no_order ?></td>
 									<td><?= $value->tgl_order ?></td>
 									<td><?= $value->alamat ?></td>
@@ -51,7 +51,12 @@
 										<br>
 										<span class="badge badge-success">Dikirim</span>
 									</td>
+									<td>
+										<!-- <?= $value->status_order == 2 ?><br> -->
+										<!-- <button class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#cek<?= $value->id_transaksi ?>">Bukti Bayar</button> -->
 
+										<button class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#diterima<?= $value->id_transaksi ?>">Diterima</button>
+									</td>
 								</tr>
 							<?php } ?>
 						</tbody>
@@ -61,3 +66,28 @@
 		</div>
 	</div>
 </div>
+
+<?php foreach ($pesanan_dikirim as $key => $value) { ?>
+	<div class="modal fade" id="diterima<?= $value->id_transaksi ?>">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Pesanan Diterima</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Apakah Anda Yakin Pesanan Sudah Diterima?
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+					<a href="<?= base_url('transaksi/diterima/' . $value->id_transaksi) ?>" class="btn btn-primary">Ya</a>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+<?php } ?>

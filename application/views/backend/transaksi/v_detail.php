@@ -53,7 +53,7 @@
 
 							<tr>
 								<td>Nama Penerima</td>
-								<td><?= $value->nama_pelanggan ?></td>
+								<td><?= $value->nama ?></td>
 							</tr>
 							<tr>
 								<td>No Hp</td>
